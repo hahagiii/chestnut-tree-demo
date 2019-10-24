@@ -16,7 +16,7 @@ public class Client {
 	public static ChestnutTree chestnutTree;
 	 
 	 public static void main(String args[]) throws Exception{
-		 InternalMsgFactory.init("io.chestnut.core.example.commonAPI");
+		 InternalMsgFactory.init("io.chestnut.server.commonAPI");
 
 		 chestnutTree = new ChestnutTree(new ChestnutTreeOption().clientOpt(1));
 		 ThreadGroupOptions options = new ThreadGroupOptions().setThreadGroupInfo("robot", 4);

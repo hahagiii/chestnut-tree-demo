@@ -10,7 +10,7 @@ public class SceneServer {
 	public static ChestnutTree chestnutTree;
 	
 	public static void main(String args[]) throws Exception {
-		 InternalMsgFactory.init("io.chestnut.core.example.commonAPI");
+		 InternalMsgFactory.init("io.chestnut.server.commonAPI");
 		 ChestnutTreeOption chestnutTreeOption = new ChestnutTreeOption();
 		 chestnutTreeOption.serviceOpt("sceneService", 6677, "127.0.0.1:8012");
 		 chestnutTree = new ChestnutTree(chestnutTreeOption);

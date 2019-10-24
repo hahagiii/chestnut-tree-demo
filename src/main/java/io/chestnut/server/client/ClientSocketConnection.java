@@ -21,7 +21,7 @@ import io.netty.channel.Channel;
 
 public class ClientSocketConnection implements SocketConnection{
 	private static final Logger logger = LoggerFactory.getLogger(ClientSocketConnection.class);
-	public static ProtocolInFactory decodeFactory = new SimpleProtocolInFactory("io.chestnut.core.example.client.clientProtocol.inProtocol");
+	public static ProtocolInFactory decodeFactory = new SimpleProtocolInFactory("io.chestnut.server.client.clientProtocol.inProtocol");
 
 	private String robotId;
 	public Chestnut robot;

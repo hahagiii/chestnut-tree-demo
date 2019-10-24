@@ -22,7 +22,7 @@ public class PlayerSocketConnection implements SocketConnection{
 	private static final Logger logger = LoggerFactory.getLogger(PlayerSocketConnection.class);
 	public Chestnut player;
 	public Channel channel;
-	public static ProtocolInFactory decodeFactory = new SimpleProtocolInFactory("io.chestnut.core.example.playerServer.protocol.inProtocol");
+	public static ProtocolInFactory decodeFactory = new SimpleProtocolInFactory("io.chestnut.server.playerServer.protocol.inProtocol");
 	@Override
 	public void receiveData(ByteBuf in) throws Exception {
 		while(true) {

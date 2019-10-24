@@ -18,7 +18,7 @@ public class PlayerServer {
 	public static ChestnutTree chestnutTree;
 	public static EntityMrg entityMrg;
 	 public static void main(String args[]) throws Exception {
-		 InternalMsgFactory.init("io.chestnut.core.example.commonAPI");
+		 InternalMsgFactory.init("io.chestnut.server.commonAPI");
 		 ChestnutTreeOption opt = new ChestnutTreeOption();
 		 opt.serviceMrgAddress("127.0.0.1:8012");
 		 opt.serverOpt(PlayerSocketConnection.class,4789);
