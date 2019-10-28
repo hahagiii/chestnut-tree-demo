@@ -1,0 +1,26 @@
+#本节点监听端口
+listenPort: 4789
+
+#运行模式 
+#server模式  直接面向客户端，处理来自客户端的tcp数据
+#service模式 只提供服务的服务节点，不直接面向客户端
+runMode: "service"
+
+#本节点给startServerId到entServerId服提供服务
+startServerId: 1
+entServerId: 100
+
+#gateWayIp 为空则不注册到网关，其他节点不能通过网关来获取此节点的信息
+gateWayIp : "127.0.0.1"
+gateWayPort : 8012
+
+#findMode 分三种
+#direct不通过网关发现服务，也不通过网关中转
+#gateWayFind 仅仅通过网关发现，然后直接连接服务
+#gateWayTransfer 通过网关发现服务，所有消息都通过网关中转
+
+#场景服务节点的ip
+sceneServiceFindMode: "direct"
+sceneServiceFindIp: "127.0.0.1"
+sceneServiceFindPort: 6677
+    

@@ -1,7 +1,7 @@
 package io.chestnut.server.client.Robot;
 
 import io.chestnut.core.Chestnut;
-import io.chestnut.core.SocketConnection;
+import io.chestnut.core.network.SocketConnection;
 
 public class Robot extends Chestnut{
 	private SocketConnection clientConnection;

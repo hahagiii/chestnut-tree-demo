@@ -5,16 +5,15 @@ import org.slf4j.LoggerFactory;
 
 import io.chestnut.core.Chestnut;
 import io.chestnut.core.DeployOptions;
-import io.chestnut.core.SocketConnection;
+import io.chestnut.core.network.SocketConnection;
+import io.chestnut.core.protocol.ProtocolIn;
+import io.chestnut.core.protocol.ProtocolInFactory;
+import io.chestnut.core.protocol.SimpleProtocolInFactory;
 import io.chestnut.server.playerServer.player.Player;
 import io.chestnut.server.playerServer.player.PlayerFactory;
 import io.chestnut.server.playerServer.protocol.ProtocolDefine;
 import io.chestnut.server.playerServer.protocol.inProtocol.PtInAuth;
 import io.chestnut.server.playerServer.protocol.outProtocol.PtOutAuth;
-import io.chestnut.core.protocol.ProtocolIn;
-import io.chestnut.core.protocol.ProtocolInFactory;
-import io.chestnut.core.protocol.ProtocolOut;
-import io.chestnut.core.protocol.SimpleProtocolInFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 
@@ -37,7 +36,7 @@ public class PlayerSocketConnection implements SocketConnection{
 				player.setClientConnection(this);
 				this.player = player;
 				logger.info("玩家登录成功  " + protocolAuthRequest.playerId);
-				sendProtocol(new PtOutAuth(protocolAuthRequest.playerId));
+				channel.writeAndFlush(new PtOutAuth(protocolAuthRequest.playerId));
 			}else {
 				player.cast(messageDecode);
 			}
@@ -57,15 +56,14 @@ public class PlayerSocketConnection implements SocketConnection{
 	}
 
 	@Override
-	public void channelActive(Channel channel) {
+	public void channelActive(Channel channel,Object[] parameter) {
 		logger.info("一个新客户端连接到来");
 		this.channel = channel;
 	}
 
 
 	@Override
-	public void sendProtocol(ProtocolOut protocolOut) {
-		this.channel.writeAndFlush(protocolOut);
+	public Channel channel() {
+		return channel;
 	}
-
 }

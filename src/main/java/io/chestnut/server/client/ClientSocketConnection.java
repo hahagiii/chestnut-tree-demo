@@ -5,17 +5,16 @@ import org.slf4j.LoggerFactory;
 
 import io.chestnut.core.Chestnut;
 import io.chestnut.core.DeployOptions;
-import io.chestnut.core.SocketConnection;
+import io.chestnut.core.network.SocketConnection;
+import io.chestnut.core.protocol.ProtocolIn;
+import io.chestnut.core.protocol.ProtocolInFactory;
+import io.chestnut.core.protocol.SimpleProtocolInFactory;
 import io.chestnut.server.client.Robot.Robot;
 import io.chestnut.server.client.Robot.RobotFactory;
 import io.chestnut.server.client.clientProtocol.ClientProtocolDefine;
 import io.chestnut.server.client.clientProtocol.inProtocol.ClientPtInAuth;
 import io.chestnut.server.client.clientProtocol.outProtocol.ClientPtOutAuth;
 import io.chestnut.server.commonAPI.MessageDefine;
-import io.chestnut.core.protocol.ProtocolIn;
-import io.chestnut.core.protocol.ProtocolInFactory;
-import io.chestnut.core.protocol.ProtocolOut;
-import io.chestnut.core.protocol.SimpleProtocolInFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 
@@ -60,16 +59,16 @@ public class ClientSocketConnection implements SocketConnection{
 	}
 
 	@Override
-	public void channelActive(Channel channel) {
+	public void channelActive(Channel channel,Object[] parameter) {
+		this.robotId = (String) parameter[0];
 		logger.info("与服务器建立连接成功，开始发送登录账号验证信息: " + robotId);
 		this.channel = channel;
 		sendProtocol(new ClientPtOutAuth(robotId));
 	}
 
-
 	@Override
-	public void sendProtocol(ProtocolOut protocolOut) {
-		channel.writeAndFlush(protocolOut);
+	public Channel channel() {
+		return channel;
 	}
 
 }

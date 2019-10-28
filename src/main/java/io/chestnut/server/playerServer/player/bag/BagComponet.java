@@ -5,9 +5,9 @@ import java.util.List;
 import io.chestnut.core.ChestnutComponent;
 import io.chestnut.core.HandleCast;
 import io.chestnut.core.Message;
+import io.chestnut.core.message.systemMsg.SystemMessageDefine;
 import io.chestnut.server.playerServer.player.Player;
 import io.chestnut.core.orm.EntityMrg;
-import io.chestnut.core.systemMessage.SystemMessageDefine;
 
 public class BagComponet extends ChestnutComponent<Player>{
 	

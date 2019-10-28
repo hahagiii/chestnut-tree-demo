@@ -2,8 +2,8 @@ package io.chestnut.server.commonAPI.scene;
 
 import io.chestnut.core.InternalMessage;
 import io.chestnut.core.MsgAnnotate;
-import io.chestnut.server.commonAPI.MessageDefine;
 import io.chestnut.core.protocol.SimpleProtocolUtil;
+import io.chestnut.server.commonAPI.MessageDefine;
 import io.netty.buffer.ByteBuf;
 
 @MsgAnnotate(id =MessageDefine.MsgEnterSceneReq)

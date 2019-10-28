@@ -1,7 +1,7 @@
 package io.chestnut.server.playerServer.player;
 
 import io.chestnut.core.Chestnut;
-import io.chestnut.core.SocketConnection;
+import io.chestnut.core.network.SocketConnection;
 
 public class Player extends Chestnut{
 	private SocketConnection clientConnection;

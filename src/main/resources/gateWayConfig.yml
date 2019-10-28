@@ -1,0 +1,3 @@
+clientListenPort: 8011
+gateWayServiceListenPort: 8012
+gateWayHttpMrgPort: 8013

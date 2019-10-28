@@ -47,7 +47,7 @@ public abstract class AOIComponent extends ChestnutComponent<Scene> {
 	}
 	
 	public AOIComponent () {
-		
+		this.componentId = "AOIComponent";
 	}
 	public abstract void getFightSpritesInHalfMoon(List<Sprite> fightSpriteList, Position pos, byte direction, int nGrid,byte gamespriteMonster);
 	public abstract void getFightSpritesInCircular(List<Sprite> fightSpriteList,Position center, int radiusGrid,byte spriteType);

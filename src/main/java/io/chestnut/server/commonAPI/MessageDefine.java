@@ -1,6 +1,8 @@
 package io.chestnut.server.commonAPI;
 
 public class MessageDefine {
+	public static final short MsgEnterPlayerServer = 800;
+	
 	public static final short MsgPlayerLogin = 1000;
 
 	public static final short MsgPlayerGoldReq = 1001;

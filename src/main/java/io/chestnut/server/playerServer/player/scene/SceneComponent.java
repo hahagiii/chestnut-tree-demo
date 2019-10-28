@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import io.chestnut.core.ChestnutComponent;
 import io.chestnut.core.HandleCast;
-import io.chestnut.core.InternalMsgFactory;
 import io.chestnut.core.Message;
 import io.chestnut.server.commonAPI.MessageDefine;
 import io.chestnut.server.commonAPI.scene.MsgEnterSceneRep;
@@ -24,13 +23,13 @@ public class SceneComponent extends ChestnutComponent<Player>{
 	public void enterSceneReq(Message message) throws Exception {
 		isChangeScene = true;
 		PtInEnterScene ptInEnterScene = (PtInEnterScene) message;
-		MsgEnterSceneReq requset = InternalMsgFactory.getMessage(MessageDefine.MsgEnterSceneReq);
+		MsgEnterSceneReq requset =  getOwner().chestnutTree().getMessage(MessageDefine.MsgEnterSceneReq);
 		requset.setParameter(ptInEnterScene.sceneId, getOwner().getId());
 		PlayerServer.chestnutTree.request("sceneService", "SceneMrg", requset , getOwner(),  res ->{
 			MsgEnterSceneRep msgEnterSceneReq = (MsgEnterSceneRep) res;
 			getOwner().sceneId = msgEnterSceneReq.getSceneId();
 			logger.info("进入场景成功 " + msgEnterSceneReq.getSceneId());
-			getOwner().clientConnection().sendProtocol(new PtOutEnterScene(getOwner().sceneId));
+			PlayerServer.sendProtocol(getOwner(), new PtOutEnterScene(getOwner().sceneId));
 			isChangeScene = false;
 		});
 		
